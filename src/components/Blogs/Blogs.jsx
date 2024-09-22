@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Blog from "../Blog/Blog";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -8,5 +9,12 @@ export default function Blogs() {
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
-  return <div></div>;
+  return (
+    <div className="md:w-2/3">
+      <h1 className="text-4xl">Blogs: {blogs.length}</h1>
+      {blogs.map((blog) => (
+        <Blog blog={blog}></Blog>
+      ))}
+    </div>
+  );
 }
